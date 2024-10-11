@@ -44,11 +44,13 @@ console.log(palabrasTerminanConA(palabras)) // -> true
 // 4.1 Crea una función llamada `buscaPalabras` que reciba dos parámetros: un array `words` y una palabra `word`.
 // Busca el índice de la palabra en el array y devuelve todas las palabras después de ese índice en un nuevo array
 function buscaPalabras(words, word) {
-    const index = words.indexOf(word);
-        if (index === -1){
-            return [];
-        }
-        return words.slice(index+1);
+    const index = words.indexOf(word); 
+
+    if (index === -1) {
+        return [];
+    }
+
+    return words.slice(index + 1);
 }
 
 const words = ['hola', 'mundo', 'javascript', 'node'];
@@ -59,7 +61,7 @@ console.log(buscaPalabras(words, 'mundo')) // El resultado debe ser: ['javascrip
 // Si no la encuentra, devuelve [-1, -1].
 function findJavaScript(matrix) {
     for (let i = 0; i < matrix.length; i++){
-        for (let j = 0; j < matrix.length; i++){
+        for (let j = 0; j < matrix[i].length; j++){
             if (matrix[i][j] === "JavaScript"){
                 return [i , j];
             }
@@ -89,8 +91,11 @@ function findMinMaxPages(books) {
     let maxIndex = 0;
 
     for (let i = 1; i < books.length; i++){
-        if (books[i] > books[maxIndex]){
-            maxIndex = i;
+        if (books[i] < books[minIndex]){
+            minIndex = i;
+        }
+        if (books[i] > books[maxIndex]) {
+            maxIndex = i; 
         }
     }
     return [minIndex, maxIndex];
